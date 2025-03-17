@@ -1,0 +1,79 @@
+frontend/
+├── public/
+│   ├── index.html               # Main HTML template
+│   ├── favicon.ico              # Favicon
+│   ├── manifest.json            # PWA manifest (optional)
+│   └── robots.txt               # SEO instructions for crawlers (optional)
+├── src/
+│   ├── api/                     # API integration logic
+│   │   ├── client.js            # Config for HTTP client (e.g., Axios instance)
+│   │   └── endpoints.js         # API endpoint definitions
+│   ├── assets/                  # Static assets (images, fonts, styles)
+│   │   ├── fonts/
+│   │   │   └── Roboto-Regular.ttf
+│   │   ├── images/
+│   │   │   ├── logo.svg
+│   │   │   └── banner.jpg
+│   │   └── styles/
+│   │       ├── base.scss        # Global styles
+│   │       ├── variables.scss   # SCSS variables for theming
+│   │       └── mixins.scss      # SCSS mixins for reusable style patterns
+│   ├── components/              # Reusable UI components (your updated structure)
+│   │   ├── charts/              # All chart-related components
+│   │   │   ├── VitalSignsChart.js
+│   │   │   ├── RiskScoreChart.js
+│   │   │   └── charts.module.scss
+│   │   ├── dashboard/           # Components for the main dashboard
+│   │   │   ├── Dashboard.js
+│   │   │   ├── Dashboard.module.scss
+│   │   │   └── widgets/         # (Optional) further split out reusable widgets
+│   │   │       ├── DashboardWidget.js
+│   │   │       └── widget.module.scss
+│   │   ├── layout/              # Overall layout components
+│   │   │   ├── Header.js
+│   │   │   ├── Sidebar.js
+│   │   │   ├── Footer.js
+│   │   │   └── layout.module.scss
+│   │   └── risk_assessment/     # Components related to risk assessment
+│   │       ├── RiskAssessment.js
+│   │       ├── RiskAssessment.module.scss
+│   │       └── RiskDetail.js
+│   ├── context/                 # React Context providers (if using Context API)
+│   │   ├── AuthContext.js       # Example: user authentication context
+│   │   └── DataContext.js       # Example: IoT sensor data context
+│   ├── hooks/                   # Custom React hooks for reusable logic
+│   │   ├── useAuth.js
+│   │   ├── useFetch.js
+│   │   └── useInterval.js
+│   ├── pages/                   # Full-page components (views)
+│   │   ├── Home.js
+│   │   ├── DashboardPage.js
+│   │   ├── History.js
+│   │   ├── Settings.js
+│   │   └── NotFound.js          # 404 page
+│   ├── routes/                  # Routing configuration
+│   │   └── Routes.js            # Central route definitions (React Router)
+│   ├── services/                # Business logic & service layer
+│   │   ├── riskService.js       # Functions to handle risk-related API calls
+│   │   └── userService.js       # Functions for user management & auth
+│   ├── store/                   # Redux or other state-management setup
+│   │   ├── actions/
+│   │   │   ├── dataActions.js
+│   │   │   └── authActions.js
+│   │   ├── reducers/
+│   │   │   ├── dataReducer.js
+│   │   │   └── authReducer.js
+│   │   ├── selectors/
+│   │   │   └── dataSelectors.js
+│   │   └── store.js             # Store configuration
+│   ├── utils/                   # Utility functions and helpers
+│   │   ├── dateUtils.js
+│   │   └── validation.js
+│   ├── App.js                   # Root React component
+│   ├── index.js                 # Application entry point
+│   └── setupTests.js            # Testing framework setup (e.g., Jest)
+├── .env                         # Environment variables (e.g., API keys, endpoints)
+├── .gitignore                   # Files and folders to ignore in version control
+├── package.json                 # Project metadata and dependencies
+├── README.md                    # Project documentation and setup instructions
+└── yarn.lock or package-lock.json  # Dependency lock file
