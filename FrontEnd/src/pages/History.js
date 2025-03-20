@@ -1,10 +1,18 @@
 import React from 'react';
+import './History.scss';
 
 const History = () => {
   return (
-    <div>
-      <h1>History</h1>
-      <p>Display historical data here.</p>
+    <div className="historyContainer">
+      <header className="historyHeader">
+        <h1>History</h1>
+      </header>
+      <section className="historyContent">
+        <p>Review your historical health data and insights over time.</p>
+        <div className="chartPlaceholder">
+          Chart placeholder for historical data...
+        </div>
+      </section>
     </div>
   );
 };

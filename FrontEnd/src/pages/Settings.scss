@@ -1,0 +1,39 @@
+@import '../assets/styles/variables';
+@import '../assets/styles/mixins';
+
+.settingsContainer {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #e67e22, #e74c3c);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem;
+  font-family: 'Roboto', sans-serif;
+  color: #fff;
+}
+
+.settingsHeader {
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+}
+
+.settingsContent {
+  max-width: 600px;
+  text-align: center;
+
+  p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+
+  .settingsCard {
+    background: rgba(255, 255, 255, 0.85);
+    padding: 2rem;
+    border-radius: 10px;
+    color: $text-color;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  }
+}

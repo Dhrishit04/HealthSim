@@ -1,7 +1,7 @@
 @import '../assets/styles/variables';
 @import '../assets/styles/mixins';
 
-// Main container spans full viewport with an animated gradient base
+// Main container with an animated gradient background
 .homeContainer {
   width: 100%;
   min-height: 100vh;
@@ -14,7 +14,7 @@
   font-family: 'Roboto', sans-serif;
 }
 
-// New dynamic background layer with a pulsing radial gradient and animated pseudo-shapes
+// Dynamic background layer with a pulsing radial gradient and animated pseudo-shapes
 .dynamicBackground {
   position: absolute;
   top: 0;
@@ -33,7 +33,6 @@
     border-radius: 50%;
     animation: floatBackground 15s ease-in-out infinite;
   }
-
   &::before {
     width: 150px;
     height: 150px;
@@ -41,7 +40,6 @@
     left: 20%;
     animation-delay: 0s;
   }
-
   &::after {
     width: 200px;
     height: 200px;
@@ -78,7 +76,7 @@
   }
 }
 
-// Hero section styled as a translucent, card-like container with a smooth fade-in animation
+// Hero section styled as a translucent card with decorative floating shapes
 .heroSection {
   position: relative;
   z-index: 2;
@@ -103,13 +101,11 @@
       margin-bottom: 1.5rem;
       font-weight: bold;
     }
-
     p {
       color: $text-color;
       font-size: 1.25rem;
       margin-bottom: 2rem;
     }
-
     .ctaButton {
       background-color: $secondary-color;
       color: #fff;
@@ -129,8 +125,8 @@
       }
     }
   }
-
-  // Existing decorative shapes overlay inside the hero section for additional visual interest
+  
+  // Decorative floating shapes over the hero section
   .decorativeShapes {
     position: absolute;
     top: 0;
@@ -173,7 +169,6 @@
   }
 }
 
-// Fade in and slide up animation for the hero section
 @keyframes fadeInUp {
   to {
     transform: translateY(0);
@@ -181,7 +176,6 @@
   }
 }
 
-// Floating animation for the decorative shapes within the hero section
 @keyframes float {
   0% {
     transform: translateY(0) rotate(0deg);
