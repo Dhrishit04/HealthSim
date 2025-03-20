@@ -1,4 +1,35 @@
+@import '../../assets/styles/variables';
+@import '../../assets/styles/mixins';
+
 .dashboard {
-    padding: 20px;
+  padding: 2rem;
+  animation: fadeIn 0.7s ease forwards;
+  transform: translateY(20px);
+  opacity: 0;
+
+  @keyframes fadeIn {
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
   }
-  
+}
+
+.title {
+  color: $primary-color;
+  margin-bottom: 1.5rem;
+}
+
+.widgetGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
