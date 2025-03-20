@@ -18,7 +18,7 @@ frontend/
 │   │       ├── base.scss        # Global styles
 │   │       ├── variables.scss   # SCSS variables for theming
 │   │       └── mixins.scss      # SCSS mixins for reusable style patterns
-│   ├── components/              # Reusable UI components (your updated structure)
+│   ├── components/              # Reusable UI components
 │   │   ├── charts/              # All chart-related components
 │   │   │   ├── VitalSignsChart.js
 │   │   │   ├── RiskScoreChart.js
@@ -47,6 +47,7 @@ frontend/
 │   │   └── useInterval.js
 │   ├── pages/                   # Full-page components (views)
 │   │   ├── Home.js
+│   │   ├── Home.scss 
 │   │   ├── DashboardPage.js
 │   │   ├── History.js
 │   │   ├── Settings.js

@@ -1,4 +1,3 @@
-// Dashboard.js
 import React from 'react';
 import styles from './Dashboard.module.scss';
 import DashboardWidget from './widgets/DashboardWidget';

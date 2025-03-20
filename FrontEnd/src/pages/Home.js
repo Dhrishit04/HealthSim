@@ -1,4 +1,3 @@
-// Home.js
 import React from 'react';
 import './Home.scss';  // Import the Home.scss file
 const Home = () => {
