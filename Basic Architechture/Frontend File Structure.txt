@@ -53,7 +53,7 @@ frontend/
 │   │   ├── History.js
 │   │   ├── History.scss
 │   │   ├── Settings.js
-│   │   ├── Home.scss
+│   │   ├── Settings.scss
 │   │   └── NotFound.js          # 404 page
 │   ├── routes/                  # Routing configuration
 │   │   └── Routes.js            # Central route definitions (React Router)
