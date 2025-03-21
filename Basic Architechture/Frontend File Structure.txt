@@ -49,8 +49,11 @@ frontend/
 │   │   ├── Home.js
 │   │   ├── Home.scss 
 │   │   ├── DashboardPage.js
+│   │   ├── DashboardPage.scss
 │   │   ├── History.js
+│   │   ├── History.scss
 │   │   ├── Settings.js
+│   │   ├── Home.scss
 │   │   └── NotFound.js          # 404 page
 │   ├── routes/                  # Routing configuration
 │   │   └── Routes.js            # Central route definitions (React Router)
