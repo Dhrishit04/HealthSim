@@ -1,8 +1,74 @@
-.widget {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    padding: 15px;
-    margin: 10px;
-    border-radius: 4px;
+
+.widgetContainer {
+  background-color: #fff;
+  color: #333;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.widgetTitle {
+  margin-bottom: 0.5rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.widgetDescription {
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Theme Toggle Button */
+.themeButton {
+  background-color: #f5576c;
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    background-color: darken(#f5576c, 10%);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   }
-  
+}
+
+/* Widgets */
+.medicationReminderWidget,
+.stepsTrackerWidget {
+  background-color: #fafafa;
+  border-radius: 6px;
+  padding: 1rem;
+  margin-top: 1rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+
+  h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+  }
+  p {
+    font-size: 0.95rem;
+    color: #555;
+  }
+}
+
+/* Dark Theme */
+.darkTheme {
+  background-color: #333;
+  color: #f2f2f2;
+
+  .medicationReminderWidget,
+  .stepsTrackerWidget {
+    background-color: #444;
+    h3 {
+      color: #fff;
+    }
+    p {
+      color: #ddd;
+    }
+  }
+}
