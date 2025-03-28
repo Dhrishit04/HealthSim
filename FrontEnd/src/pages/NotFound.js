@@ -6,6 +6,8 @@ import History from '../pages/History';
 import Settings from '../pages/Settings';
 import NotFound from '../pages/NotFound';
 
+
+
 const AppRoutes = () => {
   return (
     <Routes>
