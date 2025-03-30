@@ -1,9 +1,14 @@
+
 import React from 'react';
 
 const RiskDetail = ({ details }) => {
   return (
     <div>
-      <p>{details}</p>
+      {details ? (
+        <pre>{JSON.stringify(details, null, 2)}</pre>
+      ) : (
+        <p>No risk details available.</p>
+      )}
     </div>
   );
 };

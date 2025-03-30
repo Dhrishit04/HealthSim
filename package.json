@@ -1,6 +1,8 @@
 {
   "dependencies": {
     "axios": "^1.8.4",
+    "flash": "^1.1.0",
+    "flask": "^0.2.10",
     "react-icons": "^5.5.0"
   }
 }

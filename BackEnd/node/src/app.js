@@ -9,7 +9,7 @@ const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/userRoutes');
 const riskRoutes = require('./routes/riskRoutes');
 
-// Load environment variables (using config file or dotenv)
+// Load environment variables
 require('dotenv').config({ path: '../../.env' });
 
 // Initialize Express app
