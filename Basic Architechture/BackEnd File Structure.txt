@@ -1,0 +1,52 @@
+backend/
+├── node/                          # Node/Express backend
+│   ├── src/
+│   │   ├── config/                # Configuration files (env variables, DB connections)
+│   │   │   ├── db.js              # Database connection setup (e.g., MongoDB, PostgreSQL)
+│   │   │   └── env.js             # Environment configuration and variables
+│   │   ├── controllers/           # Request handling and response logic
+│   │   │   ├── authController.js  # Handles authentication endpoints (login, registration, etc.)
+│   │   │   ├── userController.js  # Manages user settings and profile operations
+│   │   │   └── riskController.js  # Processes requests for risk assessments and vital sign data
+│   │   ├── models/                # Database models/schemas
+│   │   │   ├── User.js            # Defines the User schema/model
+│   │   │   ├── VitalSign.js       # Schema for storing vital signs data
+│   │   │   └── RiskAssessment.js  # Schema for risk assessment data
+│   │   ├── routes/                # API route definitions
+│   │   │   ├── authRoutes.js      # Endpoints for authentication (login, logout, etc.)
+│   │   │   ├── userRoutes.js      # Endpoints for user settings and profile management
+│   │   │   └── riskRoutes.js      # Endpoints for risk and vital sign data
+│   │   ├── services/              # Business logic and external integrations
+│   │   │   ├── authService.js     # Logic for handling authentication and tokens
+│   │   │   ├── userService.js     # Business logic for user operations
+│   │   │   └── riskService.js     # Logic for risk calculations and interfacing with the Python service
+│   │   ├── middleware/            # Custom middleware (authentication, error handling, etc.)
+│   │   │   ├── authMiddleware.js  # Protects routes by verifying JWT or sessions
+│   │   │   └── errorMiddleware.js # Centralized error handling
+│   │   ├── utils/                 # Utility functions and helpers
+│   │   │   ├── logger.js          # Logging configuration (e.g., Winston or Morgan)
+│   │   │   └── validation.js      # Helper functions for request data validation
+│   │   └── app.js                 # Main Express app initialization
+│   ├── tests/                     # Unit and integration tests for Node backend
+│   │   ├── auth.test.js           # Tests for authentication endpoints
+│   │   ├── user.test.js           # Tests for user endpoints
+│   │   └── risk.test.js           # Tests for risk endpoints
+│   ├── .env                     # Environment variables (DB credentials, API keys)
+│   ├── .gitignore                 # Files and folders to ignore in version control
+│   ├── package.json               # Node dependencies and project metadata
+│   └── README.md                  # Documentation for the Node backend
+├── python/                        # Python/Flask microservice for ML and data generation
+│   ├── app.py                     # Flask API entry point
+│   ├── requirements.txt           # Python dependencies (NumPy, Pandas, scikit-learn, etc.)
+│   ├── ml/                       # ML algorithms and data processing scripts
+│   │   ├── data_generation.py     # Generates synthetic vital streams
+│   │   ├── risk_model.py          # Implements risk analytics using scikit-learn
+│   │   └── __init__.py            # Makes this folder a Python package
+│   ├── database/                  # SQLite models or migrations (if needed)
+│   │   ├── models.py              # Database models using SQLAlchemy (or similar)
+│   │   └── __init__.py
+│   ├── tests/                     # Tests for the Python service
+│   │   └── test_app.py            # Tests for the Flask API and ML functions
+│   └── README.md                  # Documentation for the Python service
+├── .gitignore                     # Top-level gitignore for the backend repository
+└── README.md                      # Overall backend documentation and setup instructions
