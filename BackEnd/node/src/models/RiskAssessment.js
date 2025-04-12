@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-const RiskAssessmentSchema = new mongoose.Schema({
-  user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
-  riskScore: { type: Number, required: true },
-  details: { type: Object },
+const RiskAssessmentSchema = new Schema({
+  user: { type: Schema.Types.ObjectId, ref: 'User' },
+  risk: Number,
   assessedAt: { type: Date, default: Date.now }
 });
 
