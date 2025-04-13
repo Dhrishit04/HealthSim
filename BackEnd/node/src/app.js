@@ -3,6 +3,10 @@ const bodyParser = require('body-parser');
 const logger = require('./utils/logger');
 const errorMiddleware = require('./middleware/errorMiddleware');
 
+// importing database
+const connectDB = require('./config/db');
+connectDB();
+
 // Import API routes
 const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/userRoutes');
