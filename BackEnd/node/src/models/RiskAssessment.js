@@ -1,10 +1,24 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
 
-const RiskAssessmentSchema = new Schema({
-  user: { type: Schema.Types.ObjectId, ref: 'User' },
-  risk: Number,
-  assessedAt: { type: Date, default: Date.now }
+const riskAssessmentSchema = new mongoose.Schema({
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
+  },
+  score: {
+    type: Number,
+    required: true
+  },
+  category: {
+    type: String,
+    enum: ['Low', 'Moderate', 'High'],
+    required: true
+  },
+  generatedAt: {
+    type: Date,
+    default: Date.now
+  }
 });
 
-module.exports = mongoose.model('RiskAssessment', RiskAssessmentSchema);
+module.exports = mongoose.model('RiskAssessment', riskAssessmentSchema);

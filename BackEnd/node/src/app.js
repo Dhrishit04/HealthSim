@@ -3,6 +3,9 @@ const bodyParser = require('body-parser');
 const logger = require('./utils/logger');
 const errorMiddleware = require('./middleware/errorMiddleware');
 
+// Load env variables (via our env.js or directly using dotenv)
+require('dotenv').config();
+
 // importing database
 const connectDB = require('./config/db');
 connectDB();
@@ -12,8 +15,6 @@ const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/userRoutes');
 const riskRoutes = require('./routes/riskRoutes');
 
-// Load env variables (via our env.js or directly using dotenv)
-require('dotenv').config();
 
 const app = express();
 
