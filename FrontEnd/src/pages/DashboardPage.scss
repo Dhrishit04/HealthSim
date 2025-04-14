@@ -1,5 +1,6 @@
 @import '../assets/styles/variables';
 @import '../assets/styles/mixins';
+
 .dashboardContainer {
   width: 100%;
   min-height: 100vh;
@@ -61,7 +62,6 @@
         font-weight: 500;
         transition: background-color 0.2s ease;
         cursor: pointer;
-
         &:hover {
           background-color: #f2f2f2;
         }
@@ -73,8 +73,13 @@
       /* Widgets submenu wrapper */
       .submenuWrapper {
         position: relative;
-
-        /* The actual submenu (conditionally rendered in JS) */
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        cursor: pointer;
+        .dropdownIcon {
+          font-size: 1.2rem;
+        }
         .submenu {
           position: absolute;
           top: 0;
@@ -84,7 +89,7 @@
           box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
           padding: 0.5rem;
           min-width: 140px;
-
+          /* You can add additional styling for spacing here if desired */
           button {
             display: block;
             width: 100%;
@@ -104,7 +109,7 @@
     }
   }
 
-  /* Light-mode dynamic background */
+  /* Dynamic background (light mode only) */
   .dynamicBackground {
     position: absolute;
     top: 0;
@@ -141,37 +146,23 @@
   }
 
   @keyframes backgroundPulse {
-    0% {
-      transform: scale(1);
-      opacity: 0.5;
-    }
-    50% {
-      transform: scale(1.1);
-      opacity: 0.3;
-    }
-    100% {
-      transform: scale(1);
-      opacity: 0.5;
-    }
+    0% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.1); opacity: 0.3; }
+    100% { transform: scale(1); opacity: 0.5; }
   }
   @keyframes floatShape {
-    0% {
-      transform: translate(0, 0);
-    }
-    50% {
-      transform: translate(20px, -20px);
-    }
-    100% {
-      transform: translate(0, 0);
-    }
+    0% { transform: translate(0, 0); }
+    50% { transform: translate(20px, -20px); }
+    100% { transform: translate(0, 0); }
   }
 
-  /* Main content with cards */
+  /* Main dashboard content */
   .dashboardContent {
     position: relative;
     z-index: 2;
     flex: 1;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     gap: 2rem;
@@ -211,26 +202,21 @@
   }
 
   @keyframes fadeInUp {
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
+    to { transform: translateY(0); opacity: 1; }
   }
 }
 
 /* Dark theme override */
 .darkTheme {
   background: #1f2937;
-
   .dynamicBackground {
     display: none;
   }
-
   .card {
     background: #2e2e2e;
     color: #fff;
     .cardIcon {
-      color: #f093fb; /* highlight color in dark mode */
+      color: #f093fb;
     }
   }
 }
