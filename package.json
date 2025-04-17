@@ -3,6 +3,10 @@
     "axios": "^1.8.4",
     "flash": "^1.1.0",
     "flask": "^0.2.10",
+    "react-beautiful-dnd": "^13.1.1",
     "react-icons": "^5.5.0"
+  },
+  "devDependencies": {
+    "sass": "^1.86.3"
   }
 }
