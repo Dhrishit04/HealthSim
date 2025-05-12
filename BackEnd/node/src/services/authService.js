@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-// Optionally I can import the User model if plan to save data in MongoDB
+
 // const User = require('../models/User');
 
 exports.login = async (email, password) => {
