@@ -1,4 +1,4 @@
-# HealthSim: Virtual IoT Simulator for Dynamic Health Risk Assessment
+# HealthSim: Virtual Simulator for Dynamic Health Risk Assessment
 
 [![Python](https://img.shields.io/badge/Python-3.x-blue?style=for-the-badge&logo=python)](https://www.python.org)  
 [![Flask](https://img.shields.io/badge/Flask-2.x-lightgrey?style=for-the-badge&logo=flask)](https://flask.palletsprojects.com/)  
@@ -11,7 +11,7 @@
 
 ## 📖 Overview
 
-**HealthSim** is a fully software-based platform that simulates IoT health monitoring and performs dynamic risk assessment. It generates synthetic health data (heart rate, blood pressure, oxygen saturation) using a Python-based simulation engine and processes this data via a Flask API. Integrated risk analysis with scikit-learn computes personalized risk scores, while a React-powered frontend visualizes the data in real-time using libraries like Recharts or Victory.
+**HealthSim** is a fully software-based platform that simulates health monitoring and performs dynamic risk assessment. It generates synthetic health data (heart rate, blood pressure, oxygen saturation) using a Python-based simulation engine and processes this data via a Flask API. Integrated risk analysis with scikit-learn computes personalized risk scores, while a React-powered frontend visualizes the data in real-time using libraries like Recharts or Victory.
 
 ---
 
