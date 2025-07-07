@@ -1,10 +1,11 @@
 // BackEnd\node\src\app.js
 const express = require('express');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const logger = require('./utils/logger');
 const errorMiddleware = require('./middleware/errorMiddleware');
 
-// Load env variables (via our env.js or directly using dotenv)
+// Load env variables 
 require('dotenv').config();
 
 // importing database
@@ -20,8 +21,8 @@ const riskRoutes = require('./routes/riskRoutes');
 const app = express();
 
 // Middleware to parse incoming requests
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // API endpoints
 app.use('/api/auth', authRoutes);

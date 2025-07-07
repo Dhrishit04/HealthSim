@@ -1,21 +1,22 @@
-import unittest
-from app import app
+# python/app.py
 
-class FlaskTestCase(unittest.TestCase):
-    def setUp(self):
-        self.app = app.test_client()
+from flask import Flask, jsonify, request
+from ml.data_generation import generate_vital_signs
 
-    def test_assess_endpoint(self):
-        response = self.app.get('/assess?heartRate=80')
-        self.assertEqual(response.status_code, 200)
-        data = response.get_json()
-        self.assertIn('risk', data)
+app = Flask(__name__)
 
-    def test_vitals_endpoint(self):
-        response = self.app.get('/vitals')
-        self.assertEqual(response.status_code, 200)
-        data = response.get_json()
-        self.assertIn('vitals', data)
+@app.route('/vitals', methods=['GET'])
+def get_vitals():
+    num = int(request.args.get('num', 1))
+    vitals = generate_vital_signs(num)
+    return jsonify({"vitals": vitals})
+
+@app.route('/assess', methods=['GET'])
+def assess_risk():
+    heart_rate = int(request.args.get('heartRate', 70))
+    # Placeholder risk model
+    risk_score = 0.1 if 60 <= heart_rate <= 100 else 0.8
+    return jsonify({'risk': risk_score})
 
 if __name__ == '__main__':
-    unittest.main()
+    app.run(debug=True, port=5000)

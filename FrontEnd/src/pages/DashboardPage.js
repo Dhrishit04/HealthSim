@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Dashboard from '../components/dashboard/Dashboard';
 import DashboardWidget from '../components/dashboard/widgets/DashboardWidget';
 import {
   FaBars,
+  FaSignInAlt,
   FaHeartbeat,
   FaExclamationTriangle,
   FaHistory,
@@ -12,50 +13,43 @@ import {
   FaThLarge
 } from 'react-icons/fa';
 import { fetchVitalSigns, fetchRiskData } from '../api/endpoints';
+
 import './DashboardPage.scss';
 
 const DashboardPage = () => {
-  // State for toggling the main dropdown menu
+  const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
-  // State for toggling the "Widgets" submenu
   const [widgetMenuOpen, setWidgetMenuOpen] = useState(false);
   const [theme, setTheme] = useState('light');
 
-  // States for backend data
   const [vitalData, setVitalData] = useState(null);
   const [riskData, setRiskData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Toggle the main menu when the hamburger icon is clicked
   const toggleMenu = () => {
-    setMenuOpen((prev) => !prev);
-    if (menuOpen) {
-      setWidgetMenuOpen(false);
-    }
+    setMenuOpen(!menuOpen);
+    if (menuOpen) setWidgetMenuOpen(false);
   };
 
-  // Toggle the Widgets submenu when "Widgets" is clicked
   const toggleWidgetsSubmenu = (e) => {
     e.stopPropagation();
-    setWidgetMenuOpen((prev) => !prev);
+    setWidgetMenuOpen(!widgetMenuOpen);
   };
 
-  // Change the theme state (for both the parent container and DashboardWidget)
   const handleParentThemeChange = (e) => {
     e.stopPropagation();
     setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
   };
 
-  // Fetch backend data on component mount
   useEffect(() => {
     Promise.all([fetchVitalSigns(), fetchRiskData()])
-      .then(([vitalResponse, riskResponse]) => {
-        setVitalData(vitalResponse.data);
-        setRiskData(riskResponse.data);
+      .then(([vRes, rRes]) => {
+        setVitalData(vRes.data);
+        setRiskData(rRes.data);
         setIsLoading(false);
       })
-      .catch((error) => {
-        console.error('Error fetching data:', error);
+      .catch((err) => {
+        console.error('Error fetching data:', err);
         setIsLoading(false);
       });
   }, []);
@@ -64,10 +58,18 @@ const DashboardPage = () => {
     <div className={`dashboardContainer ${theme === 'dark' ? 'darkTheme' : ''}`}>
       <header className="taskbar">
         <h2 className="taskbarTitle">IoT Dashboard</h2>
-        <div className="menuIcon" onClick={toggleMenu}>
-          <FaBars />
+
+        <div className="headerActions">
+          {/* 1️⃣ menu icon */}
+          <div className="menuIcon" onClick={toggleMenu}>
+            <FaBars />
+          </div>
+          {/* 2️⃣ login/profile icon */}
+          <div className="loginIcon" onClick={() => navigate('/login')}>
+            <FaSignInAlt />
+          </div>
         </div>
-        {/* Main Dropdown Menu */}
+
         {menuOpen && (
           <nav className="dropdownMenu">
             <Link to="/history" className="dropdownItem">
@@ -78,13 +80,12 @@ const DashboardPage = () => {
               <FaCog className="dropdownIcon" />
               Settings
             </Link>
-            {/* Widgets submenu */}
             <div className="dropdownItem submenuWrapper" onClick={toggleWidgetsSubmenu}>
               <FaThLarge className="dropdownIcon" />
               <span>Widgets</span>
               {widgetMenuOpen && (
                 <div className="submenu" onClick={(e) => e.stopPropagation()}>
-                  <DashboardWidget />
+                  <DashboardWidget theme={theme} />
                   <button onClick={handleParentThemeChange}>
                     Switch to {theme === 'light' ? 'Dark' : 'Light'} Theme
                   </button>
@@ -98,22 +99,37 @@ const DashboardPage = () => {
           </nav>
         )}
       </header>
-      {/* Show the dynamic background only in light theme */}
-      {theme === 'light' && <div className="dynamicBackground"></div>}
-      {/* Main Dashboard Content: Cards + Dashboard component that renders charts using fetched data */}
+
+      {theme === 'light' && <div className="dynamicBackground" />}
+
+      {/* HERO SECTION */}
+      <section className="heroSection">
+        <h1>Welcome to HealthSim</h1>
+        <p>Real-time insights into vitals and health risk metrics.</p>
+      </section>
+
+      {/* INFO CARDS */}
       <section className="dashboardContent">
         <div className="card">
-          <FaHeartbeat className="cardIcon" />
+          <div className="cardIconWrapper">
+            <FaHeartbeat className="cardIcon" />
+          </div>
           <h2>Vital Signs</h2>
-          <p>Monitor your real-time heart rate, blood pressure, etc.</p>
+          <p>Track your heart rate, BP, SpO₂ and more.</p>
         </div>
         <div className="card">
-          <FaExclamationTriangle className="cardIcon" />
+          <div className="cardIconWrapper">
+            <FaExclamationTriangle className="cardIcon" />
+          </div>
           <h2>Risk Score</h2>
-          <p>Stay updated on your health risk assessment at a glance.</p>
+          <p>Evaluate your overall health risk in real-time.</p>
         </div>
+      </section>
+
+      {/* CHART SECTION */}
+      <section className="chartSection">
         {isLoading ? (
-          <p>Loading data...</p>
+          <p className="loadingText">Loading data...</p>
         ) : (
           <Dashboard vitalData={vitalData} riskData={riskData} theme={theme} />
         )}

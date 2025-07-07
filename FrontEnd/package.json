@@ -4,6 +4,7 @@
   "lockfileVersion": 3,
   "requires": true,
   "private": true,
+  "proxy": "http://localhost:5000",
   "packages": {},
   "scripts": {
     "build": "react-scripts build",

@@ -11,7 +11,7 @@
   font-family: 'Roboto', sans-serif;
   background: linear-gradient(135deg, #6dd5ed, #2193b0);
 
-  /* Taskbar (dark nav) */
+  /* Taskbar */
   .taskbar {
     display: flex;
     align-items: center;
@@ -20,15 +20,24 @@
     color: #fff;
     padding: 1rem 2rem;
     position: relative;
-    z-index: 2;
+    z-index: 3;
 
     .taskbarTitle {
       font-size: 1.8rem;
-      margin: 0;
       font-weight: bold;
+      margin: 0;
     }
-    .menuIcon {
-      font-size: 1.8rem;
+
+    .headerActions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .menuIcon,
+    .loginIcon {
+      font-size: 1.6rem;
+      color: #fff;
       cursor: pointer;
       transition: color 0.2s ease;
       &:hover {
@@ -36,21 +45,19 @@
       }
     }
 
-    /* Main dropdown menu */
     .dropdownMenu {
       position: absolute;
       top: 100%;
       right: 2rem;
-      background-color: #fff;
+      background: #fff;
       color: #333;
       border-radius: 8px;
       box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
       margin-top: 0.5rem;
       min-width: 200px;
-      z-index: 10;
       display: flex;
       flex-direction: column;
-      padding: 0.5rem 0;
+      z-index: 4;
 
       .dropdownItem {
         display: flex;
@@ -60,48 +67,42 @@
         text-decoration: none;
         color: #333;
         font-weight: 500;
-        transition: background-color 0.2s ease;
         cursor: pointer;
+        transition: background 0.2s;
+
         &:hover {
-          background-color: #f2f2f2;
+          background: #f2f2f2;
         }
+
         .dropdownIcon {
           font-size: 1.2rem;
         }
       }
 
-      /* Widgets submenu wrapper */
       .submenuWrapper {
         position: relative;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        cursor: pointer;
-        .dropdownIcon {
-          font-size: 1.2rem;
-        }
+
         .submenu {
           position: absolute;
           top: 0;
           left: 100%;
-          background-color: #fff;
+          background: #fff;
           border-radius: 8px;
           box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
           padding: 0.5rem;
-          min-width: 140px;
-          /* You can add additional styling for spacing here if desired */
+          min-width: 160px;
+
           button {
-            display: block;
             width: 100%;
             padding: 0.5rem 1rem;
             background: none;
             border: none;
             text-align: left;
             cursor: pointer;
-            font-size: 1rem;
-            color: #333;
+            transition: background 0.2s;
+
             &:hover {
-              background-color: #f2f2f2;
+              background: #f2f2f2;
             }
           }
         }
@@ -109,7 +110,7 @@
     }
   }
 
-  /* Dynamic background (light mode only) */
+  /* Light-mode animated background */
   .dynamicBackground {
     position: absolute;
     top: 0;
@@ -145,78 +146,134 @@
     }
   }
 
-  @keyframes backgroundPulse {
-    0% { transform: scale(1); opacity: 0.5; }
-    50% { transform: scale(1.1); opacity: 0.3; }
-    100% { transform: scale(1); opacity: 0.5; }
-  }
-  @keyframes floatShape {
-    0% { transform: translate(0, 0); }
-    50% { transform: translate(20px, -20px); }
-    100% { transform: translate(0, 0); }
+  /* Hero / intro panel */
+  .heroSection {
+    z-index: 2;
+    width: 85%;
+    margin: 2rem auto 1rem;
+    padding: 2.5rem;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(4px);
+    border-radius: 12px;
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: #fff;
+    }
+    p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      color: #fff;
+    }
   }
 
-  /* Main dashboard content */
+  /* Info cards */
   .dashboardContent {
-    position: relative;
     z-index: 2;
-    flex: 1;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
     gap: 2rem;
-    padding: 2rem;
+    padding: 1rem 2rem;
 
     .card {
       background: #fff;
-      color: #333;
       border-radius: 10px;
       padding: 2rem;
-      width: 300px;
+      width: 280px;
       text-align: center;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-      animation: fadeInUp 1s ease forwards;
-      transform: translateY(30px);
-      opacity: 0;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.3s, box-shadow 0.3s;
+
       &:hover {
-        transform: translateY(0) scale(1.02);
+        transform: translateY(-5px);
         box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
       }
-      .cardIcon {
-        font-size: 4rem;
-        color: #2193b0;
+
+      .cardIconWrapper {
         margin-bottom: 1rem;
+        display: flex;
+        justify-content: center;
+      }
+      .cardIcon {
+        font-size: 3.5rem;
+        color: #2193b0;
       }
       h2 {
         margin-bottom: 0.5rem;
-        font-size: 1.8rem;
+        font-size: 1.6rem;
         color: #444;
       }
       p {
         font-size: 1rem;
-        line-height: 1.5;
+        color: #555;
+        line-height: 1.4;
       }
     }
   }
 
-  @keyframes fadeInUp {
-    to { transform: translateY(0); opacity: 1; }
+  /* Chart / main dashboard area */
+  .chartSection {
+    z-index: 2;
+    width: 95%;
+    margin: 2rem auto 4rem;
+    background: #fff;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+
+    .loadingText {
+      text-align: center;
+      font-size: 1.2rem;
+      color: #444;
+    }
   }
 }
 
-/* Dark theme override */
-.darkTheme {
+/*─────────────────────────────────────────────────────────────────────────────*/
+/* Move keyframes out of any selector                                      */
+/*─────────────────────────────────────────────────────────────────────────────*/
+@keyframes backgroundPulse {
+  0%   { transform: scale(1);   opacity: 0.5; }
+  50%  { transform: scale(1.1); opacity: 0.3; }
+  100% { transform: scale(1);   opacity: 0.5; }
+}
+@keyframes floatShape {
+  0%, 100% { transform: translate(0, 0); }
+  50%      { transform: translate(20px, -20px); }
+}
+
+/*─────────────────────────────────────────────────────────────────────────────*/
+/* Dark-theme overrides                                                    */
+/*─────────────────────────────────────────────────────────────────────────────*/
+.dashboardContainer.darkTheme {
   background: #1f2937;
+
   .dynamicBackground {
     display: none;
   }
-  .card {
+  .taskbar {
+    background: #111827;
+  }
+  .heroSection {
+    background: rgba(255, 255, 255, 0.07);
+    h1, p {
+      color: #eee;
+    }
+  }
+  .dashboardContent .card {
     background: #2e2e2e;
-    color: #fff;
     .cardIcon {
       color: #f093fb;
     }
+    h2, p {
+      color: #ddd;
+    }
+  }
+  .chartSection {
+    background: #2c2c2c;
+    color: #eee;
   }
 }

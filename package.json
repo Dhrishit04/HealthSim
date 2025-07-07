@@ -1,12 +1,28 @@
 {
+  "name": "healthsim-backend",
+  "version": "1.0.0",
+  "description": "Backend service for HealthSim project",
+  "main": "BackEnd/node/src/app.js",
+  "scripts": {
+    "start": "node BackEnd/node/src/app.js",
+    "test": "jest"
+  },
   "dependencies": {
     "axios": "^1.8.4",
-    "flash": "^1.1.0",
-    "flask": "^0.2.10",
-    "react-beautiful-dnd": "^13.1.1",
-    "react-icons": "^5.5.0"
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "dotenv": "^17.0.1",
+    "express": "^4.21.2",
+    "helmet": "^8.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.16.1",
+    "morgan": "^1.10.0",
+    "winston": "^3.17.0"
   },
   "devDependencies": {
-    "sass": "^1.86.3"
+    "jest": "^29.7.0",
+    "sass": "^1.86.3",
+    "supertest": "^4.0.2",
+    "winston": "^3.8.2"
   }
 }
