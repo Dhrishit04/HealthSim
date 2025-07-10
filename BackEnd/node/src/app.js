@@ -6,7 +6,8 @@ const logger = require('./utils/logger');
 const errorMiddleware = require('./middleware/errorMiddleware');
 
 // Load env variables 
-require('dotenv').config();
+require('dotenv').config({ path: '.env' });
+// console.log("Environment Variables:", process.env); // to confirm that .env is loaded correctly
 
 // importing database
 const connectDB = require('./config/db');

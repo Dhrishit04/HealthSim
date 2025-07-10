@@ -1,7 +1,6 @@
-# python/ml/data_generation.py
+# BackEnd/python/ml/data_generation.py
 
 import numpy as np
-
 def generate_vital_signs(num_records=1):
     data = {
         'heartRate': np.random.randint(60, 100, size=num_records).tolist(),

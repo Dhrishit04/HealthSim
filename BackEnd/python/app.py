@@ -1,9 +1,14 @@
-# python/app.py
+# BackEnd/python/app.py
 
 from flask import Flask, jsonify, request
+import numpy as np
 from ml.data_generation import generate_vital_signs
 
 app = Flask(__name__)
+
+@app.route('/', methods=['GET'])
+def home():
+    return jsonify({"message": "Welcome to HealthSim API!"})
 
 @app.route('/vitals', methods=['GET'])
 def get_vitals():
@@ -20,3 +25,5 @@ def assess_risk():
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
+
+print(app.url_map)

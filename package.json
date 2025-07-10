@@ -22,7 +22,6 @@
   "devDependencies": {
     "jest": "^29.7.0",
     "sass": "^1.86.3",
-    "supertest": "^4.0.2",
-    "winston": "^3.8.2"
+    "supertest": "^4.0.2"
   }
 }
