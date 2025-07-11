@@ -1,24 +1,40 @@
-const mongoose = require('mongoose');
+// BackEnd/node/src/models/RiskAssessment.js
 
+const mongoose = require('mongoose');
 const riskAssessmentSchema = new mongoose.Schema({
   userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
     required: true
   },
-  score: {
+  vitalSignId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'VitalSign'
+  },
+  riskScore: {
     type: Number,
-    required: true
+    min: 0,
+    max: 1
   },
   category: {
     type: String,
     enum: ['Low', 'Moderate', 'High'],
     required: true
   },
-  generatedAt: {
+  reason: {
+    type: String
+  },
+
+  timestamp: {
     type: Date,
     default: Date.now
   }
 });
-
 module.exports = mongoose.model('RiskAssessment', riskAssessmentSchema);
+
+
+
+
+
+
+
