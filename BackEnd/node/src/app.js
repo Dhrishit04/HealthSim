@@ -25,10 +25,9 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// API endpoints
-app.use('/api/auth', authRoutes);
-app.use('/api/users', userRoutes);
-app.use('/api/risk', riskRoutes);
+app.use('/api', authRoutes);
+app.use('/api', userRoutes);
+app.use('/api', riskRoutes);
 
 // error handler
 app.use(errorMiddleware);

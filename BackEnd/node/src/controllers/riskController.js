@@ -1,21 +1,29 @@
-// BackEnd\node\src\controllers\riskController.js
+// BackEnd/node/src/controllers/riskController.js
 const riskService = require('../services/riskService');
 
-exports.assessRisk = async (req, res, next) => {
+exports.getVitalSigns = async (req, res, next) => {
+  const { num } = req.query;
+  if (!num || isNaN(num) || num <= 0) {
+    return res.status(400).json({ error: 'Valid "num" parameter is required' });
+  }
+
   try {
-    const params = req.query;
-    const risk = await riskService.calculateRisk(params);
-    res.json({ risk });
+    const vitals = await riskService.getVitalSigns({ num });
+    res.json(vitals);
   } catch (error) {
     next(error);
   }
 };
 
-exports.getVitalSigns = async (req, res, next) => {
+exports.assessRisk = async (req, res, next) => {
+  const { heartRate } = req.query;
+  if (!heartRate || isNaN(heartRate)) {
+    return res.status(400).json({ error: 'Valid "heartRate" parameter is required' });
+  }
+
   try {
-    const params = req.query;
-    const vitals = await riskService.getVitalSigns(params);
-    res.json({ vitals });
+    const risk = await riskService.calculateRisk({ heartRate });
+    res.json(risk);
   } catch (error) {
     next(error);
   }

@@ -5,7 +5,9 @@ const router = express.Router();
 const riskController = require('../controllers/riskController');
 
 // controller functions 
-router.get('/api/risk', riskController.assessRisk);
-router.get('/api/vitals', riskController.getVitalSigns);
+// router.get('/api/risk', riskController.assessRisk);
+// router.get('/api/vitals', riskController.getVitalSigns);
+router.get('/vitals', riskController.getVitalSigns);
+router.get('/assess', riskController.assessRisk);
 
 module.exports = router;
